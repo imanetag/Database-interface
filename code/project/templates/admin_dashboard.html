@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard</title>
+    <style>
+        /* Your existing styles remain unchanged */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #D2691E; 
+            color: #ecf0f1;
+            padding-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .logo-details {
+            display: flex;
+            height: 60px;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .logo-details i {
+            font-size: 28px;
+            margin-right: 5px;
+            color: #3498db;
+        }
+
+        .logo-details .logo_name {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            padding: 30px 0;
+            list-style: none;
+            
+        }
+
+        .nav-links li {
+            margin-bottom: 30px; /* Adjust the margin as needed to create space between items */
+            border-bottom: 2px solid #fff; /* White border between items */
+        }
+
+        .nav-links a {
+            display: flex;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .nav-links span {
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .home-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .sidebar-button {
+            display: none;
+        }
+
+        .home-content {
+            text-align: center;
+            height: 100%;
+        }
+
+        .home-content p {
+            margin: 0;
+        }
+
+        .home-content img {
+            max-width: 100%;
+            height: 100%;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .overlay-titles {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .overlay-titles p:first-child {
+            color: #ff7f50;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .overlay-titles p:last-child {
+            color: #3498db;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            .home-section {
+                margin-top: 20px;
+            }
+
+            .sidebar-button {
+                display: block;
+                font-size: 28px;
+                cursor: pointer;
+                margin-bottom: 20px;
+            }
+
+            .home-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar" id="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus'></i>
+            <span class="logo_name">Admin Dashboard</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li><a href="{{ url_for('admin_dashboard') }}" class="active"><i class='bx bx-grid-alt'></i><span>Dashboard</span></a></li>
+            <li><a href="{{ url_for('client_operations') }}"><i class='bx bx-user'></i><span>Client</span></a></li>
+            <li><a href="#"><i class='bx bx-folder'></i><span>Projet</span></a></li>
+            <li><a href="#"><i class='bx bx-user'></i><span>Employe</span></a></li>
+            <li><a href="#"><i class='bx bx-code'></i><span>Technologie</span></a></li>
+            <li><a href="#"><i class='bx bx-task'></i><span>Tache</span></a></li>
+            <li><a href="#"><i class='bx bx-user'></i><span>Utilisateur</span></a></li>
+            <li><a href="#"><i class='bx bx-credit-card'></i><span>Paiement</span></a></li>
+            <li><a href="#"><i class='bx bx-file'></i><span>Facture</span></a></li>
+            <li><a href="#"><i class='bx bx-group'></i><span>Equipe</span></a></li>
+            <li><a href="#"><i class='bx bx-user'></i><span>Membre de l'Equipe</span></a></li>
+            <li><a href="#"><i class='bx bx-book'></i><span>Module</span></a></li>
+        </ul>
+
+        <div class="sidebar-button" onclick="toggleSidebar()">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+    
+
+    <section class="home-section">
+        <div class="sidebar-button" onclick="toggleSidebar()">
+            <i class='bx bx-menu'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+
+        <div class="home-content">
+            <img src="/static/images/back.jpg" alt="Dashboard Image">
+            <div class="overlay-titles">
+                <p>Welcome to the Admin Dashboard.</p>
+                <p>This is your admin dashboard where you can manage your database.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
+

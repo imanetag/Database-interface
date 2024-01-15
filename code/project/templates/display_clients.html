@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Records</title>
+</head>
+<body>
+    <h1>Client Records</h1>
+    <table border="1">
+        <tr>
+            <th>Client ID</th>
+            <th>Client Name</th>
+            <th>Client Address</th>
+            <th>Client Email</th>
+            <th>Client Phone Number</th>
+        </tr>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client[0] }}</td>
+                <td>{{ client[1] }} {{ client[2] }}{{ client[3] }}{{ client[4] }}{{ client[5] }}</td>
+   
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

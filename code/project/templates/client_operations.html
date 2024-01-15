@@ -1,0 +1,43 @@
+<!-- client_operations.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your head content here if needed -->
+    <title>Client Operations</title>
+</head>
+<body>
+    <h1>Client Operations</h1>
+
+    <!-- Display Clients section -->
+    <h2>Display Clients</h2>
+    <ul>
+        {% for client in clients %}
+            <li>{{ client[1] }} {{ client[2] }} - {{ client[4] }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add_Client form -->
+    <form method="post" action="{{ url_for('add_client_route') }}">
+        <!-- Add your input fields here based on the Add_Client function -->
+        <!-- Example: -->
+        <!-- <label for="clientID">Client ID:</label> -->
+        <!-- <input type="text" name="clientID" required><br> -->
+        <!-- ... (Add other input fields) ... -->
+        <!-- <input type="submit" value="Add Client"> -->
+    </form>
+
+    <!-- Update_Client form -->
+    <form method="post" action="{{ url_for('update_client_route') }}">
+        <!-- Similar to the Add_Client form, add input fields for updating clients -->
+    </form>
+
+    <!-- Delete_Client form -->
+    <form method="post" action="{{ url_for('delete_client_route') }}">
+        <!-- Similar to the Add_Client form, add input fields for deleting clients -->
+    </form>
+
+    <!-- Add your other content here -->
+
+</body>
+</html>
