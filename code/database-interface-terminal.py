@@ -2124,7 +2124,7 @@ def task_menu():
         elif choice == '4':
             Display_All_Tasks()
         elif choice == '5':
-            task_id = input("Enter Technology ID to check: ")
+            task_id = input("Enter Task ID to check: ")
             check_task(task_id)
         elif choice == '0':
             break
